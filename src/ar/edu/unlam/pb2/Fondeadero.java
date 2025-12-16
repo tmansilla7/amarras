@@ -5,12 +5,14 @@ import java.util.ArrayList;
 public class Fondeadero {
 	
 	private ArrayList <Yate> amarras;
-	int cantidadMaximaDeAmarras;
 	double importeTotal;
+	int cantidadDeYatesAmarrados;
+	int cantidadMaximaDeAmarras;
 	
 	public Fondeadero(int numero) {
 		this.cantidadMaximaDeAmarras = numero;
 		this.amarras = new ArrayList<>();
+		this.cantidadDeYatesAmarrados = 0;
 	}
 
 	public int getCantidadMaximaDeAmarras() {
@@ -40,8 +42,6 @@ public class Fondeadero {
 	}
 
 	public int getCantidadDeYatesAmarrados() {
-		int cantidadDeYatesAmarrados = 0;
-		
 		for(Yate yates: amarras) {
 			cantidadDeYatesAmarrados++;
 		}
@@ -50,13 +50,7 @@ public class Fondeadero {
 	}
 
 	public int getCantidadDeAmarrasDisponibles() {
-		int cantidadDeYatesAmarrados = 0;
-		
-		for(Yate yates: amarras) {
-			cantidadDeYatesAmarrados++;
-		}
-		
-		return this.getCantidadMaximaDeAmarras() - cantidadDeYatesAmarrados;
+		return this.getCantidadMaximaDeAmarras() - getCantidadDeYatesAmarrados();
 	}
 
 	public double obtenerPrecioAmarre(Yate yate) {
